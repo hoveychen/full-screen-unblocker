@@ -1,0 +1,7 @@
+#fsunblocker-statuspanelImage[status="active"] {
+    list-style-image: url("chrome://fsunblocker/skin/icon_16.png");
+}
+
+#fsunblocker-statuspanelImage[status="inactive"] {
+    list-style-image: url("chrome://fsunblocker/skin/icon_16grey.png");
+}

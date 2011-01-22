@@ -1,0 +1,8 @@
+<!ENTITY fsunblocker.label "Your localized menuitem">
+<!ENTITY fsunblockerContext.label "Your Menuitem">
+<!ENTITY fsunblockerContext.accesskey "Y">
+<!ENTITY fsunblockerToolbarButton.label "Your Toolbar Button">
+<!ENTITY fsunblockerToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY fsunblockerSidebar.label "Your Sidebar">
+<!ENTITY fsunblockerToolbar.name  "example">
+<!ENTITY fsunblockerToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &fsunblockerToolbar.name;">

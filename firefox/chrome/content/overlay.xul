@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://fsunblocker/skin/overlay.css" type="text/css"?>
+<overlay id="fsunblocker-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script src="overlay.js"/>
+
+<stringbundleset id="stringbundleset">
+	<stringbundle id="fsunblocker-strings" src="chrome://fsunblocker/locale/overlay.properties"/>
+</stringbundleset>
+
+<popupset id="mainPopupSet">
+    <menupopup id="fsunblocker-menuPopup"
+               position="before_start">
+        <menuitem label="Active"
+                  oncommand="fsunblocker.active();" 
+				  />
+        <menuitem label="Inactive"
+                  oncommand="fsunblocker.inactive();" 
+				  />
+	</menupopup>
+</popupset>
+
+<statusbar id="status-bar">
+	<statusbarpanel id="fsunblocker-statuspanel"
+					context="fsunblocker-menuPopup"
+					insertbefore="last"
+					>
+		<hbox>
+			<image id="fsunblocker-statuspanelImage"
+				   status="inactive" 
+				   tooltiptext="Video Fullscreen Unblocker is inactive"/>
+		</hbox>
+	</statusbarpanel>
+</statusbar>
+  
+</overlay>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+	  var count = 0;
+      function onRequest(request, sender, sendResponse) {
+	    count ++;
+		chrome.pageAction.show(sender.tab.id);
+        sendResponse({});
+      };
+	  
+      // Listen for the content script to send a message to the background page.
+      chrome.extension.onRequest.addListener(onRequest);
+	  
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-20850194-1']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = 'https://ssl.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+    </script>
+  </head>
+</html>
