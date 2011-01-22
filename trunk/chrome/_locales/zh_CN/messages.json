@@ -1,8 +1,8 @@
 {
-  "manifest_name": {
+  "name": {
     "message": "视频全屏解锁器"
   },
-  "manifest_description": {
+  "description": {
     "message": "解除在线视频的全屏限制。让你随时随地舒适看视频。支持优酷和土豆视频。"
   },
   "default_title": {

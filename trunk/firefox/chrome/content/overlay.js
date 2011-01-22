@@ -51,7 +51,7 @@ var fsunblocker = {
 				"allowFullScreen='true' " +
 				"allowscriptaccess='sameDomain' " +
 				"play='true'"+ 
-				"flashvars='channel=29&adext=000&isShowRelatedVideo=false&showAd=0&show_pre=0&show_next=0&isAutoPlay=" + isAutoPlay + videoIDS +  "&isDebug=false&winType=interior&playMovie=true&MMControl=false&MMout=false&RecordCode=1001,1002,1003,1004,1005,1006,2001,3001,3002,3003,3004,3005,3007,3008,9999' " + 
+				"flashvars='channel=29&isShowRelatedVideo=false&showAd=0&show_pre=0&show_next=0&isAutoPlay=" + isAutoPlay + videoIDS +  "&isDebug=false&winType=interior&playMovie=true&MMControl=false&MMout=false&RecordCode=1001,1002,1003,1004,1005,1006,2001,3001,3002,3003,3004,3005,3007,3008,9999' " + 
 				"wmode='transparent' " +
 				"menu='false' " +
 				"quality='high' " +
@@ -60,7 +60,9 @@ var fsunblocker = {
 			var newNode = content.document.createElement("p");
 			newNode.innerHTML = newEmbed;
 			obj.parentNode.insertBefore(newNode,obj);
-			obj.parentNode.removeChild(obj);			
+			obj.width = 0;
+			obj.height = 0;
+			if (isAutoPlay) obj.parentNode.removeChild(obj);
 			foundVideo = true;
 		}
 		fsunblocker.setIcon(foundVideo);
