@@ -1,0 +1,7 @@
+content   fsunblocker                 chrome/content/
+skin      fsunblocker   classic/1.0   chrome/skin/
+locale    fsunblocker   en-US         chrome/locale/en-US/
+locale    fsunblocker   zh-CN         chrome/locale/zh-CN/
+
+
+overlay   chrome://browser/content/browser.xul   chrome://fsunblocker/content/overlay.xul
