@@ -5,6 +5,7 @@ var video_pattern = [
 function checkVideoState(e) {
 	var objs = document.getElementsByTagName("embed");
 	var id = "fullscreened_movie_player";
+	var count = 0;
 	for (var i=0; i < objs.length; ++i ) {
 		var obj = objs[i];
 		if (obj.checked || obj.id == id) continue;
@@ -46,12 +47,10 @@ function checkVideoState(e) {
 "pluginspage='http://www.macromedia.com/go/getflashplayer'/>";
 		var newNode = document.createElement("p");
 		newNode.innerHTML = newEmbed;
-		obj.parentNode.insertBefore(newNode,obj);
-		obj.width = 0;
-		obj.height = 0;
-		if (isAutoPlay) obj.parentNode.removeChild(obj);
-		
+		obj.parentNode.replaceChild(newNode,obj);
 		chrome.extension.sendRequest({}, function(response) {});
+		++count;
+		if (count > 1) break;
 	}
 }
 

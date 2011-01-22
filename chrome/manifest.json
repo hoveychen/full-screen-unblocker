@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "1.0.2",
+  "version": "1.0.2.1",
   "description": "__MSG_description__",
   "page_action": {
     "default_icon": "icon_24.png",
@@ -20,7 +20,7 @@
         "https://*/*"
       ],
       "js" : ["contentscript.js"],
-      "run_at" : "document_start",
+      "run_at" : "document_end",
       "all_frames" : true
     }
   ],
