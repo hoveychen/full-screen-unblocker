@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Video Full Screen Unblocked"
+  },
+  "description": {
+    "message": "Extension for getting rid of full screen restriction of online videos. Youku.com and Tudou.com is supported."
+  },
+  "default_title": {
+    "message": "Video fullscreen unblocker is active"
+  } 
+}
