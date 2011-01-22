@@ -1,3 +1,14 @@
+// helper for outerHTML
+function GetOuterHTML(o)
+{
+	var a=o.attributes, str="<"+o.tagName, i=0;
+	for(;i<a.length;i++) 
+	if(a[i].specified) str+=" "+a[i].name+'="'+a[i].value+'"'; 
+	if(!o.canHaveChildren) return str+" />"; 
+	return str+">"+o.innerHTML+"</"+o.tagName+">"; 
+}
+
+
 var fsunblocker = {
 	video_pattern : [
 		/youku\.com/i,
@@ -11,9 +22,11 @@ var fsunblocker = {
 	},
 	
 	checkVideoState: function() {
-		var objs = content.document.getElementsByTagName("embed");
+		var docs = content.document;
+		var objs = docs.getElementsByTagName("embed");
 		var id = "fullscreened_movie_player";
 		var foundVideo = false;
+		var count = 0;
 		for (var i=0; i < objs.length; ++i ) {
 			var obj = objs[i];
 			if (obj.id == id) {
@@ -30,13 +43,14 @@ var fsunblocker = {
 				}
 			}
 			if (!isVideo) continue;
+			var cnt = GetOuterHTML(obj);
 			var isAutoPlay = "false";
-			var ret = (/isAutoPlay="?'?(\w+)"?'?/i).exec(obj.outerHTML);
+			var ret = (/isAutoPlay="?'?(\w+)"?'?/i).exec(cnt);
 			if (ret != null) {
 				isAutoPlay = ret[1];
 			}
 			var videoIDS = "";
-			ret = (/VideoIDS="?'?([\d\w]+)"?'?/i).exec(obj.outerHTML);
+			ret = (/VideoIDS="?'?([\d\w]+)"?'?/i).exec(cnt);
 			if (ret != null) {
 				videoIDS = "&VideoIDS=" +ret[1];
 			}
@@ -57,13 +71,13 @@ var fsunblocker = {
 				"quality='high' " +
 				"type='application/x-shockwave-flash' " +
 				"pluginspage='http://www.macromedia.com/go/getflashplayer'/>";
-			var newNode = content.document.createElement("p");
-			newNode.innerHTML = newEmbed;
-			obj.parentNode.insertBefore(newNode,obj);
-			obj.width = 0;
-			obj.height = 0;
-			if (isAutoPlay) obj.parentNode.removeChild(obj);
+			var tmpDiv = docs.createElement("div");
+			tmpDiv.innerHTML = newEmbed;
+			var newNode = tmpDiv.firstChild;
+			obj.parentNode.replaceChild(newNode,obj);
 			foundVideo = true;
+			++count;
+			if (count > 1) break;
 		}
 		fsunblocker.setIcon(foundVideo);
 	},
